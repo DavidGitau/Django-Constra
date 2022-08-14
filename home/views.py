@@ -4,7 +4,7 @@ from .models import (
     Fact, 
     Project,
 )
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 def home_view(request):
     context = {
@@ -16,3 +16,7 @@ def home_view(request):
 class ProjectList(ListView):
     model = Project
     template_name = 'project/project.html'
+
+class ProjectDetail(DetailView):
+    model = Project
+    template_name = 'project/detail.html'
