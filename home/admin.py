@@ -1,4 +1,8 @@
 from django.contrib import admin
-from .models import Fact
+from .models import (
+    Category,
+    Fact,
+    Project,
+)
 
-admin.site.register(Fact)
+admin.site.register([Category, Fact, Project])
