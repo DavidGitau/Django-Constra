@@ -19,6 +19,13 @@ class Fact(CommonInfo):
     number = models.IntegerField()
     image = models.ImageField(upload_to='images/icon-image/')
 
+class PricingFeatures(CommonInfo):
+    pass
+
+class Pricing(CommonInfo):
+    features = models.ManyToManyField(PricingFeatures)
+    price = models.IntegerField()
+
 class Project(CommonInfo):
     about = models.TextField(default='Morbi turpis nisl, auctor ut nisl vel, pellentesque euismod nunc nunc accumsan imperdiet.')
     location = models.CharField(max_length=100, default='McLean, VA')
