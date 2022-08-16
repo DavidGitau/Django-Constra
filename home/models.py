@@ -24,12 +24,12 @@ class Fact(CommonInfo):
 
 class News(CommonInfo):
     comments = models.IntegerField()
-    author = models.CharField()
+    author = models.CharField(max_length=100)
     date = models.DateField()
     image = models.ImageField(upload_to='images/news/')
 
     class Meta:
-        verbose_name_plurall = 'News'
+        verbose_name_plural = 'News'
 
 class PricingFeatures(CommonInfo):
     pass
