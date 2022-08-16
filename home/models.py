@@ -3,6 +3,7 @@ from django.db import models
 
 class CommonInfo(models.Model):
     name = models.CharField(max_length=100)
+    about = models.TextField(default='Nats Stenman began his career in construction with boots on the ground')
 
     def __str__(self):
         return self.name
@@ -11,11 +12,13 @@ class CommonInfo(models.Model):
         abstract = True
     
 class Category(CommonInfo):
+    about = None
     class Meta:
         verbose_name_plural = 'Categories'
 
 
 class Fact(CommonInfo):
+    about = None
     number = models.IntegerField()
     image = models.ImageField(upload_to='images/icon-image/')
 
@@ -23,11 +26,11 @@ class PricingFeatures(CommonInfo):
     pass
 
 class Pricing(CommonInfo):
+    about = None
     features = models.ManyToManyField(PricingFeatures)
     price = models.IntegerField()
 
 class Project(CommonInfo):
-    about = models.TextField(default='Morbi turpis nisl, auctor ut nisl vel, pellentesque euismod nunc nunc accumsan imperdiet.')
     location = models.CharField(max_length=100, default='McLean, VA')
     client = models.CharField(max_length=100, default='Pransbay Powers Authority')
     architect = models.CharField(max_length=100, default='Dlarke Pelli Incorp')
@@ -35,13 +38,19 @@ class Project(CommonInfo):
     image = models.ImageField(upload_to='images/projects/')
     categories = models.ManyToManyField(Category)
 
+class Service(CommonInfo):
+    solutions = models.ManyToManyField('Solution')
+    image1 = models.ImageField(upload_to='images/services/')
+    image2 = models.ImageField(upload_to='images/services/')
+    icon = models.ImageField(upload_to='images/services/')
+
+class Solution(CommonInfo):
+    about = None
+
 class Team(CommonInfo):
-    about = models.TextField(default='Nats Stenman began his career in construction with boots on the ground')
     position = models.CharField(max_length=100, default='Innovation Officer')
     image = models.ImageField(upload_to='images/team/')
 
 class Testimonial(CommonInfo):
-    about = models.TextField(
-    default='Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid.')
     position = models.CharField(max_length=100, default='CEO, First Choice Group')
     image = models.ImageField(upload_to='images/clients/')
