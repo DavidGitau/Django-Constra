@@ -11,8 +11,8 @@
                 <h1 class="banner-title">News</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
-                      <li class="breadcrumb-item"><a href="#">Home</a></li>
-                      <li class="breadcrumb-item"><a href="#">News</a></li>
+                      <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Home</a></li>
+                      <li class="breadcrumb-item"><a href="{% url 'home:home' %}">News</a></li>
                       <li class="breadcrumb-item active" aria-current="page">News Right sidebar</li>
                     </ol>
                 </nav>
@@ -48,7 +48,7 @@
                     class="comments-link">Comments</a></span>
               </div>
               <h2 class="entry-title">
-                <a href="news-single.html">{{o.name}}</a>
+                <a href="{% url 'home:news-detail' o.id %}">{{o.name}}</a>
               </h2>
             </div><!-- header end -->
 
@@ -57,7 +57,7 @@
             </div>
 
             <div class="post-footer">
-              <a href="news-single.html" class="btn btn-primary">Continue Reading</a>
+              <a href="{% url 'home:news-detail' o.id %}" class="btn btn-primary">Continue Reading</a>
             </div>
 
           </div><!-- post-body end -->

@@ -71,7 +71,7 @@ urlpatterns = [
             model = Project,
             template_name = 'project/project.html'
         ), 
-        name='project-list'
+        name='project'
         ),
     path(
         'project/<int:pk>/', 
@@ -89,7 +89,7 @@ urlpatterns = [
             model = Service,
             template_name = 'service/service.html'
         ), 
-        name='service-list'
+        name='service'
         ),
     path(
         'service/<int:pk>/', 

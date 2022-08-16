@@ -11,8 +11,8 @@
                 <h1 class="banner-title">News</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
-                      <li class="breadcrumb-item"><a href="#">Home</a></li>
-                      <li class="breadcrumb-item"><a href="#">News</a></li>
+                      <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Home</a></li>
+                      <li class="breadcrumb-item"><a href="{% url 'home:home' %}">News</a></li>
                       <li class="breadcrumb-item active" aria-current="page">News left sidebar</li>
                     </ol>
                 </nav>
@@ -112,6 +112,7 @@
       </div><!-- Sidebar Col end -->
 
       <div class="col-lg-8 mb-5 mb-lg-0 order-0 order-lg-1">
+        {% for o in object_list %}
         <div class="post">
           <div class="post-media post-image">
             <img loading="lazy" src="{{o.image.url}}" class="img-fluid" alt="post-image">
@@ -131,7 +132,7 @@
                     class="comments-link">Comments</a></span>
               </div>
               <h2 class="entry-title">
-                <a href="news-single.html">{{o.name}}</a>
+                <a href="{% url 'home:news-detail' o.id %}">{{o.name}}</a>
               </h2>
             </div><!-- header end -->
 
@@ -140,7 +141,7 @@
             </div>
 
             <div class="post-footer">
-              <a href="news-single.html" class="btn btn-primary">Continue Reading</a>
+              <a href="{% url 'home:news-detail' o.id %}" class="btn btn-primary">Continue Reading</a>
             </div>
 
           </div><!-- post-body end -->
