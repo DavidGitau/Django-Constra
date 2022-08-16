@@ -32,12 +32,9 @@
           <div class="widget">
             <h3 class="widget-title">Solutions</h3>
             <ul class="nav service-menu">
-              <li><a href="service-single.html">Home Construction</a></li>
-              <li class="active"><a href="service-single.html">Building Remodels</a></li>
-              <li><a href="#">Interior Design</a></li>
-              <li><a href="#">Exterior Design</a></li>
-              <li><a href="#">Renovation</a></li>
-              <li><a href="#">Safety Management</a></li>
+              {% for o in object.solutions.all %}
+              <li><a href="{% url 'home:service-detail' o.id %}">{{o.name}}</a></li>
+              {% endfor %}
             </ul>
           </div><!-- Widget end -->
 
@@ -64,16 +61,12 @@
       <div class="col-xl-8 col-lg-8">
         <div class="content-inner-page">
 
-          <h2 class="column-title mrt-0">Building Remodels</h2>
+          <h2 class="column-title mrt-0">{{object.name}}</h2>
 
           <div class="row">
             <div class="col-md-12">
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer adipiscing erat eget risus
-                sollicitudin pellentesque et non erat. Maecenas nibh dolor, malesuada et bibendum a, sagittis accumsan
-                ipsum. Pellentesque ultrices ultrices sapien.</p>
-              <p>Nam scelerisque tristique dolor vitae tincidunt. Aenean quis massa uada mi elementum elementum. , nec
-                tincidunt nunc posuere ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla commodo
-                iaculis ligula, ac dapibus quam ornare ut. Praesent ac hendrerit sem, et tempus sem</p>
+              <p>{{object.about}}</p>
+              <p>{{object.about}}</p>
             </div><!-- col end -->
           </div><!-- 1st row end-->
 
@@ -81,11 +74,11 @@
 
           <div id="page-slider" class="page-slider">
             <div class="item">
-              <img loading="lazy" class="img-fluid" src="images/projects/project1.jpg" alt="project-slider-image" />
+              <img loading="lazy" class="img-fluid" src="{{object.image1.url}}" alt="project-slider-image" />
             </div>
 
             <div class="item">
-              <img loading="lazy" class="img-fluid" src="images/projects/project2.jpg" alt="project-slider-image" />
+              <img loading="lazy" class="img-fluid" src="{{object.image2.url}}" alt="project-slider-image" />
             </div>
           </div><!-- Page slider end -->
 

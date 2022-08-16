@@ -11,8 +11,8 @@
                 <h1 class="banner-title">News</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb justify-content-center">
-                      <li class="breadcrumb-item"><a href="#">Home</a></li>
-                      <li class="breadcrumb-item"><a href="#">News</a></li>
+                      <li class="breadcrumb-item"><a href="{% url 'home:home' %}">Home</a></li>
+                      <li class="breadcrumb-item"><a href="{% url 'home:home' %}">News</a></li>
                       <li class="breadcrumb-item active" aria-current="page">News left sidebar</li>
                     </ol>
                 </nav>
@@ -112,120 +112,41 @@
       </div><!-- Sidebar Col end -->
 
       <div class="col-lg-8 mb-5 mb-lg-0 order-0 order-lg-1">
+        {% for o in object_list %}
         <div class="post">
           <div class="post-media post-image">
-            <img loading="lazy" src="images/news/news1.jpg" class="img-fluid" alt="post-image">
+            <img loading="lazy" src="{{o.image.url}}" class="img-fluid" alt="post-image">
           </div>
 
           <div class="post-body">
             <div class="entry-header">
               <div class="post-meta">
                 <span class="post-author">
-                  <i class="far fa-user"></i><a href="#"> Admin</a>
+                  <i class="far fa-user"></i><a href="#"> {{o.author}}</a>
                 </span>
                 <span class="post-cat">
                   <i class="far fa-folder-open"></i><a href="#"> News</a>
                 </span>
-                <span class="post-meta-date"><i class="far fa-calendar"></i> June 14, 2016</span>
-                <span class="post-comment"><i class="far fa-comment"></i> 03<a href="#"
+                <span class="post-meta-date"><i class="far fa-calendar"></i> {{o.date}}</span>
+                <span class="post-comment"><i class="far fa-comment"></i> {{o.comments}}<a href="#"
                     class="comments-link">Comments</a></span>
               </div>
               <h2 class="entry-title">
-                <a href="news-single.html">We Just Completes $17.6 million Medical Clinic in Mid-Missouri</a>
+                <a href="{% url 'home:news-detail' o.id %}">{{o.name}}</a>
               </h2>
             </div><!-- header end -->
 
             <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur ...</p>
+              <p>{{o.about}}.</p>
             </div>
 
             <div class="post-footer">
-              <a href="news-single.html" class="btn btn-primary">Continue Reading</a>
+              <a href="{% url 'home:news-detail' o.id %}" class="btn btn-primary">Continue Reading</a>
             </div>
 
           </div><!-- post-body end -->
         </div><!-- 1st post end -->
-
-        <div class="post">
-          <div class="post-media post-video">
-            <div class="embed-responsive embed-responsive-16by9">
-              <!-- Change the url -->
-              <iframe class="embed-responsive-item" src="//player.vimeo.com/video/153089270?title=0&amp;byline=0&amp;portrait=0&amp;color=8aba56" allowfullscreen></iframe>
-            </div>
-          </div>
-
-          <div class="post-body">
-            <div class="entry-header">
-              <div class="post-meta">
-                <span class="post-author">
-                  <i class="far fa-user"></i><a href="#"> Admin</a>
-                </span>
-                <span class="post-cat">
-                  <i class="far fa-folder-open"></i><a href="#"> News</a>
-                </span>
-                <span class="post-meta-date"><i class="far fa-calendar"></i> June 14, 2016</span>
-                <span class="post-comment"><i class="far fa-comment"></i> 03<a href="#"
-                    class="comments-link">Comments</a></span>
-              </div>
-              <h2 class="entry-title">
-                <a href="news-single.html">Thandler Airport Water Reclamation Facility Expansion Project Named</a>
-              </h2>
-            </div><!-- header end -->
-
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur ...</p>
-            </div>
-
-            <div class="post-footer">
-              <a href="news-single.html" class="btn btn-primary">Continue Reading</a>
-            </div>
-
-          </div><!-- post-body end -->
-        </div><!-- 2nd post end -->
-
-        <div class="post">
-          <div class="post-media post-image">
-            <img loading="lazy" src="images/news/news3.jpg" class="img-fluid" alt="post-image">
-          </div>
-
-          <div class="post-body">
-            <div class="entry-header">
-              <div class="post-meta">
-                <span class="post-author">
-                  <i class="far fa-user"></i><a href="#"> Admin</a>
-                </span>
-                <span class="post-cat">
-                  <i class="far fa-folder-open"></i><a href="#"> News</a>
-                </span>
-                <span class="post-meta-date"><i class="far fa-calendar"></i> June 14, 2016</span>
-                <span class="post-comment"><i class="far fa-comment"></i> 03<a href="#"
-                    class="comments-link">Comments</a></span>
-              </div>
-              <h2 class="entry-title">
-                <a href="news-single.html">Silicon Bench and Cornike Begin Construction of Large-Scale Solar Facilities
-                  for Trade</a>
-              </h2>
-            </div><!-- header end -->
-
-            <div class="entry-content">
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                fugiat nulla pariatur. Excepteur ...</p>
-            </div>
-
-            <div class="post-footer">
-              <a href="news-single.html" class="btn btn-primary">Continue Reading</a>
-            </div>
-
-          </div><!-- post-body end -->
-        </div><!-- 3rd post end -->
+        {% endfor %}
 
         <nav class="paging" aria-label="Page navigation example">
           <ul class="pagination">
