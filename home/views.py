@@ -13,10 +13,23 @@ def home_view(request):
     }
     return render(request, 'home/home.html', context)
 
-class ProjectList(ListView):
-    model = Project
-    template_name = 'project/project.html'
+def view_404(request):
+    return render(request, 'other/404.html')
 
-class ProjectDetail(DetailView):
-    model = Project
-    template_name = 'project/detail.html'
+def about_view(request):
+    return render(request, 'about/about.html')
+
+def contact_view(request):
+    return render(request, 'other/contact.html')
+
+def faq_view(request):
+    return render(request, 'other/faq.html')
+
+def typography_view(request):
+    return render(request, 'other/typography.html')
+
+class CustomList(ListView):
+    pass
+
+class CustomDetail(DetailView):
+    pass
