@@ -22,6 +22,15 @@ class Fact(CommonInfo):
     number = models.IntegerField()
     image = models.ImageField(upload_to='images/icon-image/')
 
+class News(CommonInfo):
+    comments = models.IntegerField()
+    author = models.CharField()
+    date = models.DateField()
+    image = models.ImageField(upload_to='images/news/')
+
+    class Meta:
+        verbose_name_plurall = 'News'
+
 class PricingFeatures(CommonInfo):
     pass
 
