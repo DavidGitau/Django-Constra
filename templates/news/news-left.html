@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
+
 {% block content %}
 
 <div id="banner-area" class="banner-area" style="background-image:url({% static 'images/banner/banner1.jpg'%})">
@@ -113,7 +114,8 @@
 
       <div class="col-lg-8 mb-5 mb-lg-0 order-0 order-lg-1">
         {% for o in object_list %}
-        <div class="post">
+        {% if forloop.counter < 4 %}
+        <div class="post" id='page-{{forloop.counter}}'>
           <div class="post-media post-image">
             <img loading="lazy" src="{{o.image.url}}" class="img-fluid" alt="post-image">
           </div>
@@ -146,12 +148,13 @@
 
           </div><!-- post-body end -->
         </div><!-- 1st post end -->
+        {% endif %}
         {% endfor %}
 
         <nav class="paging" aria-label="Page navigation example">
           <ul class="pagination">
             <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-double-left"></i></a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#page-1">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>
             <li class="page-item"><a class="page-link" href="#">3</a></li>
             <li class="page-item"><a class="page-link" href="#"><i class="fas fa-angle-double-right"></i></a></li>
