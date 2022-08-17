@@ -1,3 +1,4 @@
+import email
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -16,6 +17,12 @@ class Category(CommonInfo):
     class Meta:
         verbose_name_plural = 'Categories'
 
+class Comment(CommonInfo):
+    post = models.ForeignKey('News', on_delete=models.CASCADE)
+    n_name = models.CharField(max_length=100,null=True)
+    email = models.EmailField()
+    website = models.URLField(null=True)
+
 
 class Fact(CommonInfo):
     about = None
@@ -24,6 +31,7 @@ class Fact(CommonInfo):
 
 class News(CommonInfo):
     comments = models.IntegerField()
+    comments_all = models.ManyToManyField(Comment)
     # author = models.CharField(max_length=100)
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
     date = models.DateField()
