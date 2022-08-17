@@ -39,7 +39,7 @@
               </div>
               <div class="ts-service-info">
                   <h3 class="service-box-title"><a href="{% url 'home:service-detail' o.id %}">{{o.name}}</a></h3>
-                  <p>{{o.about | truncatewords: '20' }}</p>
+                  <p>{{o.about | truncatewords:'20' }}</p>
                   <a class="learn-more d-inline-block" href="{% url 'home:service-detail' o.id %}" aria-label="service-details"><i class="fa fa-caret-right"></i> Learn more</a>
               </div>
             </div>
