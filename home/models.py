@@ -19,7 +19,7 @@ class Category(CommonInfo):
 
 class Comment(CommonInfo):
     post = models.ForeignKey('News', on_delete=models.CASCADE)
-    n_name = models.CharField(max_length=100,null=True)
+    n_name = models.ForeignKey(User, on_delete=models.CASCADE)
     email = models.EmailField()
     website = models.URLField(null=True)
 
@@ -33,7 +33,7 @@ class News(CommonInfo):
     comments = models.IntegerField()
     comments_all = models.ManyToManyField(Comment)
     # author = models.CharField(max_length=100)
-    author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
     date = models.DateField()
     image = models.ImageField(upload_to='images/news/')
 

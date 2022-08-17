@@ -118,8 +118,17 @@
                             <li><a href="{% url 'home:news-detail' 1 %}">News Single</a></li>
                           </ul>
                       </li>
-              
+                      
                       <li class="nav-item"><a class="nav-link" href="{% url 'home:contact' %}">Contact</a></li>
+
+                      {% if user.is_authenticated %}
+                      <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="{% url 'home:logout' %}" data-toggle="modal" data-target="#logoutModal">logout</a></li>
+                      <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#">{{user}}</a></li>
+                      {% else %}
+                      <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#loginModal">log</a></li>
+                      <li class="list-inline-item"><a class="text-uppercase text-color p-sm-2 py-2 px-0 d-inline-block" href="#" data-toggle="modal" data-target="#signupModal">register</a></li>
+                      {% endif %}
+              
                     </ul>
                 </div>
               </nav>
@@ -145,3 +154,5 @@
   <!--/ Navigation end -->
 </header>
 <!--/ Header end -->
+
+

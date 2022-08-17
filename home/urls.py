@@ -1,9 +1,14 @@
-from django.urls import path, include
+from django.urls import path, include 
 from .views import (
     home_view,
     about_view,
+    comment_view,
     contact_view,
     faq_view,
+    login_view,
+    logout_view,
+    news_detail,
+    reg_view,
     typography_view,
     view_404,
     CustomDetail,
@@ -24,8 +29,13 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('404/', view_404, name='404'),
     path('about/', about_view, name='about'),
+    path('comment/', comment_view, name='comment'),
     path('contact/', contact_view, name='contact'),
     path('faq/', faq_view, name='faq'),
+    path('login/', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
+    path('news/<int:id>/', news_detail, name='news-detail'),
+    path('reg/', reg_view, name='reg'),
     path('typography/', typography_view, name='typography'),
 
     # News urls
@@ -45,14 +55,14 @@ urlpatterns = [
         ), 
         name='news-left'
         ),
-    path(
-        'news/<int:pk>/', 
-        CustomDetail.as_view(
-            model = News,
-            template_name = 'news/detail.html'
-        ), 
-        name='news-detail'
-        ),
+    # path(
+    #     'news/<int:pk>/', 
+    #     CustomDetail.as_view(
+    #         model = News,
+    #         template_name = 'news/detail.html'
+    #     ), 
+    #     name='news-detail'
+    #     ),
 
     # Pricing url
     path(

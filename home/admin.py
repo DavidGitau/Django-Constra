@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import (
     Category,
+    Comment,
     Fact,
     News,
     PricingFeatures,
@@ -14,6 +15,7 @@ from .models import (
 
 admin.site.register([
     Category,
+    Comment,
     Fact,
     News,
     PricingFeatures,
